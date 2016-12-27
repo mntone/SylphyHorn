@@ -109,6 +109,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronGitHub, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronGitHub.0.2.0.0\lib\net45\IronGitHub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
@@ -155,6 +159,10 @@
     </Reference>
     <Reference Include="Open.WinKeyboardHook, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Open.WinKeyboardHook.1.0.11\lib\net45\Open.WinKeyboardHook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.58.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.3.9.58\lib\net35\ServiceStack.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StatefulModel, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
