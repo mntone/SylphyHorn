@@ -15,9 +15,15 @@ namespace SylphyHorn.Services
 {
 	public static class KeyHelper
 	{
+		public static int[] VirtualDesktopSwitchingToLeftKey { get; } = new ShortcutKey(VirtualKey.Left, VirtualKey.NoName, VirtualKey.Control).ToSerializable();
+
+		public static int[] VirtualDesktopSwitchingToRightKey { get; } = new ShortcutKey(VirtualKey.Right, VirtualKey.NoName, VirtualKey.Control).ToSerializable();
+
 		public static int[] VirtualDesktopCreationKey { get; } = new ShortcutKey(VirtualKey.D, VirtualKey.NoName, VirtualKey.Control).ToSerializable();
 
 		public static int[] VirtualDesktopDeletionKey { get; } = new ShortcutKey(VirtualKey.F4, VirtualKey.NoName, VirtualKey.Control).ToSerializable();
+
+		public static int[] TaskViewOpeningKey { get; } = new ShortcutKey(VirtualKey.Tab, VirtualKey.NoName).ToSerializable();
 
 		public static bool IsModifyKey(this VirtualKey key)
 		{

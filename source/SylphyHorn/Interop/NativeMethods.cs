@@ -50,6 +50,12 @@ namespace SylphyHorn.Interop
 		[DllImport("dxva2.dll", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		internal static extern bool DestroyPhysicalMonitors(uint dwPhysicalMonitorArraySize, PHYSICAL_MONITOR[] pPhysicalMonitorArray);
+
+		[DllImport("user32.dll", SetLastError = true)]
+		internal static extern uint SendInput(uint cInputs, INPUT[] pInputs, int cbSize);
+
+		[DllImport("user32.dll")]
+		internal static extern uint MapVirtualKey(uint uCode, MapVirtualKey uMapType);
 	}
 
 	public delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);

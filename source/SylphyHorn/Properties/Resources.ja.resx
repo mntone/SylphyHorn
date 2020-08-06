@@ -279,6 +279,21 @@
   <data name="Settings_Startup_Automaticaly" xml:space="preserve">
     <value>ログオン時に自動的に起動する</value>
   </data>
+  <data name="Settings_SwitchDesktop" xml:space="preserve">
+    <value>仮想デスクトップの切り替え</value>
+  </data>
+  <data name="Settings_SwitchDesktop_Left" xml:space="preserve">
+    <value>左へ切り替え:</value>
+  </data>
+  <data name="Settings_SwitchDesktop_Right" xml:space="preserve">
+    <value>右へ切り替え:</value>
+  </data>
+  <data name="Settings_TaskView" xml:space="preserve">
+    <value>タスク ビュー</value>
+  </data>
+  <data name="Settings_TaskView_Open" xml:space="preserve">
+    <value>開く:</value>
+  </data>
   <data name="Settings_Title" xml:space="preserve">
     <value>設定</value>
   </data>

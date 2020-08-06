@@ -15,6 +15,8 @@ namespace SylphyHorn.Serialization
 			this._provider = provider;
 		}
 
+		public ShortcutkeyProperty OpenTaskView => this.Cache(key => new ShortcutkeyProperty(key, this._provider));
+
 		public ShortcutkeyProperty MoveLeft => this.Cache(key => new ShortcutkeyProperty(key, this._provider));
 
 		public ShortcutkeyProperty MoveLeftAndSwitch => this.Cache(key => new ShortcutkeyProperty(key, this._provider, MoveLeftAndSwitchDefaultValue));
@@ -27,9 +29,9 @@ namespace SylphyHorn.Serialization
 
 		public ShortcutkeyProperty MoveNewAndSwitch => this.Cache(key => new ShortcutkeyProperty(key, this._provider, MoveNewAndSwitchDefaultValue));
 
-		public ShortcutkeyProperty SwitchToLeft => this.Cache(key => new ShortcutkeyProperty(key, this._provider, SwitchToLeftDefaultValue));
+		public ShortcutkeyProperty SwitchToLeft => this.Cache(key => new ShortcutkeyProperty(key, this._provider));
 
-		public ShortcutkeyProperty SwitchToRight => this.Cache(key => new ShortcutkeyProperty(key, this._provider, SwitchToRightDefaultValue));
+		public ShortcutkeyProperty SwitchToRight => this.Cache(key => new ShortcutkeyProperty(key, this._provider));
 
 		public ShortcutkeyProperty CloseAndSwitchLeft => this.Cache(key => new ShortcutkeyProperty(key, this._provider));
 

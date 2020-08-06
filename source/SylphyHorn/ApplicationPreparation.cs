@@ -39,6 +39,17 @@ namespace SylphyHorn
 			var settings = Settings.ShortcutKey;
 
 			this._hookService
+				.Register(() => settings.OpenTaskView.ToShortcutKey(), _ =>
+				{
+					new KeyboardInputBuilder()
+						.AddReversedKeysUp(settings.OpenTaskView.Value.Select(raw => (VirtualKeys)raw))
+						.AddKeysPress(new[] { VirtualKeys.VK_LWIN, VirtualKeys.VK_TAB })
+						.ToArray()
+						.Raise();
+				})
+				.AddTo(this._disposable);
+
+			this._hookService
 				.Register(()=>settings.MoveLeft.ToShortcutKey(), hWnd => hWnd.MoveToLeft())
 				.AddTo(this._disposable);
 
@@ -63,17 +74,57 @@ namespace SylphyHorn
 				.AddTo(this._disposable);
 
 			this._hookService
-				.Register(
-					() => settings.SwitchToLeft.ToShortcutKey(),
-					_ => VirtualDesktopService.GetLeft()?.Switch(),
-					() => Settings.General.OverrideWindowsDefaultKeyCombination || Settings.General.ChangeBackgroundEachDesktop)
+				.Register(() => settings.SwitchToLeft.ToShortcutKey(), _ =>
+				{
+					if (Settings.General.OverrideWindowsDefaultKeyCombination)
+					{
+						VirtualDesktopService.GetLeft()?.Switch();
+						return;
+					}
+
+					if (Settings.General.LoopDesktop)
+					{
+						var desktop = VirtualDesktopService.GetLastIfFirst();
+						if (desktop != null)
+						{
+							desktop.Switch();
+							return;
+						}
+					}
+
+					new KeyboardInputBuilder()
+						.AddReversedKeysUp(settings.SwitchToLeft.Value.Select(raw => (VirtualKeys)raw))
+						.AddKeysPress(new[] { VirtualKeys.VK_LCONTROL, VirtualKeys.VK_LWIN, VirtualKeys.VK_LEFT })
+						.ToArray()
+						.Raise();
+				})
 				.AddTo(this._disposable);
 
 			this._hookService
-				.Register(
-					() => settings.SwitchToRight.ToShortcutKey(),
-					_ => VirtualDesktopService.GetRight()?.Switch(),
-					() => Settings.General.OverrideWindowsDefaultKeyCombination || Settings.General.ChangeBackgroundEachDesktop)
+				.Register(() => settings.SwitchToRight.ToShortcutKey(), _ =>
+				{
+					if (Settings.General.OverrideWindowsDefaultKeyCombination)
+					{
+						VirtualDesktopService.GetRight()?.Switch();
+						return;
+					}
+
+					if (Settings.General.LoopDesktop)
+					{
+						var desktop = VirtualDesktopService.GetFirstIfLast();
+						if (desktop != null)
+						{
+							desktop.Switch();
+							return;
+						}
+					}
+
+					new KeyboardInputBuilder()
+						.AddReversedKeysUp(settings.SwitchToRight.Value.Select(raw => (VirtualKeys)raw))
+						.AddKeysPress(new[] { VirtualKeys.VK_LCONTROL, VirtualKeys.VK_LWIN, VirtualKeys.VK_RIGHT })
+						.ToArray()
+						.Raise();
+				})
 				.AddTo(this._disposable);
 
 			this._hookService

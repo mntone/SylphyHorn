@@ -12,22 +12,46 @@ namespace SylphyHorn.Services
 
 		public static VirtualDesktop GetLeft()
 		{
-			var current = VirtualDesktop.Current;
 			var desktops = VirtualDesktop.GetDesktops();
+			if (desktops.Length <= 1) return null;
 
-			return desktops.Length >= 2 && current.Id == desktops.First().Id
+			var current = VirtualDesktop.Current;
+			return current.Id == desktops.First().Id
 				? Settings.General.LoopDesktop ? desktops.Last() : null
 				: current.GetLeft();
 		}
 
+		public static VirtualDesktop GetLastIfFirst()
+		{
+			var desktops = VirtualDesktop.GetDesktops();
+			if (desktops.Length <= 1) return null;
+
+			var current = VirtualDesktop.Current;
+			return current.Id == desktops.First().Id
+				? desktops.Last()
+				: null;
+		}
+
 		public static VirtualDesktop GetRight()
 		{
-			var current = VirtualDesktop.Current;
 			var desktops = VirtualDesktop.GetDesktops();
+			if (desktops.Length <= 1) return null;
 
-			return desktops.Length >= 2 && current.Id == desktops.Last().Id
+			var current = VirtualDesktop.Current;
+			return current.Id == desktops.Last().Id
 				? Settings.General.LoopDesktop ? desktops.First() : null
 				: current.GetRight();
+		}
+
+		public static VirtualDesktop GetFirstIfLast()
+		{
+			var desktops = VirtualDesktop.GetDesktops();
+			if (desktops.Length <= 1) return null;
+
+			var current = VirtualDesktop.Current;
+			return current.Id == desktops.Last().Id
+				? desktops.First()
+				: null;
 		}
 
 		#endregion

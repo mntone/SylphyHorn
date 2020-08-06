@@ -540,6 +540,68 @@
 					<StackPanel Margin="16,0,16,16"
 								Grid.IsSharedSizeScope="True"
 								Focusable="True">
+						<TextBlock Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_TaskView}"
+								   Style="{DynamicResource HeaderStyleKey}" />
+						<Grid Margin="8,0,0,0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"
+												  SharedSizeGroup="KeyHeader" />
+								<ColumnDefinition Width="8" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="2*" />
+								</Grid.RowDefinitions>
+								<TextBlock Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_TaskView_Open}" />
+							</Grid>
+							<UniformGrid Grid.Column="2"
+										 Columns="1">
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static services:KeyHelper.TaskViewOpeningKey}, Mode=OneWay}"
+														 Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Common_ProvidedByWinows, StringFormat=' ({0})', Mode=OneWay}"
+														 IsReadOnly="True"
+														 IsEnabled="False" />
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static serialization:Settings.ShortcutKey}, Path=OpenTaskView.Value, Mode=TwoWay}" />
+							</UniformGrid>
+						</Grid>
+						<Border Height="16" />
+						
+						<TextBlock Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_SwitchDesktop}"
+								   Style="{DynamicResource HeaderStyleKey}"
+								   Margin="0,0,0,8" />
+						<Grid Margin="8,0,0,0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"
+												  SharedSizeGroup="KeyHeader" />
+								<ColumnDefinition Width="8" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="2*" />
+									<RowDefinition Height="2*" />
+								</Grid.RowDefinitions>
+								<TextBlock Grid.Row="0"
+										   Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_SwitchDesktop_Left}" />
+								<TextBlock Grid.Row="1"
+										   Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_SwitchDesktop_Right}" />
+							</Grid>
+							<UniformGrid Grid.Column="2"
+										 Columns="1">
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static services:KeyHelper.VirtualDesktopSwitchingToLeftKey}, Mode=OneWay}"
+														 Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Common_ProvidedByWinows, StringFormat=' ({0})', Mode=OneWay}"
+														 IsReadOnly="True"
+														 IsEnabled="False" />
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static serialization:Settings.ShortcutKey}, Path=SwitchToLeft.Value, Mode=TwoWay}" />
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static services:KeyHelper.VirtualDesktopSwitchingToRightKey}, Mode=OneWay}"
+														 Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Common_ProvidedByWinows, StringFormat=' ({0})', Mode=OneWay}"
+														 IsReadOnly="True"
+														 IsEnabled="False" />
+								<controls:ShortcutKeyBox Current="{Binding Source={x:Static serialization:Settings.ShortcutKey}, Path=SwitchToRight.Value, Mode=TwoWay}" />
+							</UniformGrid>
+						</Grid>
+						<Border Height="16" />
+						
 						<TextBlock Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_MoveWindowToAdjacentDesktop}"
 								   Style="{DynamicResource HeaderStyleKey}"
 								   Margin="0,0,0,8" />

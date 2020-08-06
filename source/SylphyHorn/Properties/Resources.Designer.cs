@@ -547,6 +547,51 @@ namespace SylphyHorn.Properties {
         }
         
         /// <summary>
+        ///   Switch desktop に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Settings_SwitchDesktop {
+            get {
+                return ResourceManager.GetString("Settings_SwitchDesktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Left: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Settings_SwitchDesktop_Left {
+            get {
+                return ResourceManager.GetString("Settings_SwitchDesktop_Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Right: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Settings_SwitchDesktop_Right {
+            get {
+                return ResourceManager.GetString("Settings_SwitchDesktop_Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Task view に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Settings_TaskView {
+            get {
+                return ResourceManager.GetString("Settings_TaskView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Settings_TaskView_Open {
+            get {
+                return ResourceManager.GetString("Settings_TaskView_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Settings に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Settings_Title {
