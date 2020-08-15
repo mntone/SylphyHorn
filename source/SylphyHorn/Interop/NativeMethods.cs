@@ -29,11 +29,7 @@ namespace SylphyHorn.Interop
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool EnumDisplayMonitors(IntPtr hdc, IntPtr lprcClip, EnumMonitorsDelegate lpfnEnum, IntPtr dwData);
 
-		[DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-		[return: MarshalAs(UnmanagedType.Bool)]
-		public static extern bool GetMonitorInfo(IntPtr hMonitor, ref MONITORINFOEX lpmi);
-
-		[DllImport("user32.dll", SetLastError = true)]
+		[DllImport("user32.dll", ExactSpelling = true)]
 		public static extern IntPtr MonitorFromPoint(POINT pt, MonitorDefaultTo dwFlags);
 
 		[DllImport("User32.dll", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]

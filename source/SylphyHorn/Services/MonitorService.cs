@@ -74,9 +74,9 @@ namespace SylphyHorn.Services
 		private static Monitor GetMonitorInternal(IntPtr hMonitor, bool additionalRetrive = false)
 		{
 			var info = new MONITORINFOEX();
-			info.cbSize = Marshal.SizeOf(info);
+			info.cbSize = (uint)Marshal.SizeOf(info);
 
-			if (NativeMethods.GetMonitorInfo(hMonitor, ref info))
+			if (User32.GetMonitorInfoEx(hMonitor, ref info))
 			{
 				var name = info.szDevice;
 
