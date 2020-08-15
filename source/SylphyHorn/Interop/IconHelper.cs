@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows;
 using MetroRadiance.Interop;
+using MetroRadiance.Platform;
 
 namespace SylphyHorn.Interop
 {
@@ -30,21 +31,21 @@ namespace SylphyHorn.Interop
 
 		private static Icon ScaleIconToDpi(Icon targetIcon)
 		{
-			var dpi = GetMonitorDpi();
+			var dpi = GetSystemDpi();
 
 			return new Icon(targetIcon, new System.Drawing.Size((int)(16 * dpi.ScaleX), (int)(16 * dpi.ScaleY)));
 		}
 
 		public static System.Windows.Size GetIconSize()
 		{
-			var dpi = GetMonitorDpi();
+			var dpi = GetSystemDpi();
 
 			return new System.Windows.Size(SystemParameters.SmallIconWidth * dpi.ScaleX, SystemParameters.SmallIconHeight * dpi.ScaleY);
 		}
 		
-		private static Dpi GetMonitorDpi()
+		private static Dpi GetSystemDpi()
 		{
-			return PerMonitorDpi.GetDpi(IntPtr.Zero);
+			return DpiHelper.GetDpiForSystem();
 		}
 	}
 }

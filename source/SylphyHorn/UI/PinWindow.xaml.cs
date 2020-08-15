@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Interop;
 using MetroRadiance.Interop;
 using MetroRadiance.Interop.Win32;
+using MetroRadiance.Platform;
 using SylphyHorn.Interop;
 
 namespace SylphyHorn.UI
@@ -27,7 +28,7 @@ namespace SylphyHorn.UI
 				var targetWidth = rect.Right - rect.Left;
 				var targetHeight = rect.Bottom - rect.Top;
 
-				var dpi = PerMonitorDpi.GetDpi(this._target);
+				var dpi = this.CurrentDpi;
 				var width = this.ActualWidth * dpi.ScaleX;
 				var height = this.ActualHeight * dpi.ScaleY;
 

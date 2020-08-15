@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Interop;
 using MetroRadiance.Interop;
+using MetroRadiance.Platform;
 using SylphyHorn.Serialization;
 using SylphyHorn.UI.Bindings;
 
@@ -21,10 +22,7 @@ namespace SylphyHorn.UI
 		{
 			base.OnSourceInitialized(e);
 
-			var source = PresentationSource.FromVisual(this) as HwndSource;
-			if (source == null) throw new InvalidOperationException();
-
-			var dpi = source.GetDpi();
+			var dpi = this.CurrentDpi;
 			var width = this.ActualWidth * dpi.ScaleX;
 			var height = this.ActualHeight * dpi.ScaleY;
 			var area = this._area;
