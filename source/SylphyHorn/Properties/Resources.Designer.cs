@@ -79,6 +79,15 @@ namespace SylphyHorn.Properties {
         }
         
         /// <summary>
+        ///   Segoe UI Light, Segoe UI Emoji に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notifications_FontFamily {
+            get {
+                return ResourceManager.GetString("Notifications_FontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Background に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Settings_Background {

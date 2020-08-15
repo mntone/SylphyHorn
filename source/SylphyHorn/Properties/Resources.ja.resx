@@ -123,6 +123,9 @@
   <data name="Common_Reference" xml:space="preserve">
     <value>参照</value>
   </data>
+  <data name="Notifications_FontFamily" xml:space="preserve">
+    <value>Segoe UI Light, Segoe UI Emoji, Yu Gothic UI Light</value>
+  </data>
   <data name="Settings_Background" xml:space="preserve">
     <value>背景</value>
   </data>

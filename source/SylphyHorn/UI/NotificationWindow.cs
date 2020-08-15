@@ -9,8 +9,13 @@ using SylphyHorn.Interop;
 
 namespace SylphyHorn.UI
 {
-	public class NotificationWindow : BlurWindow
+	public class NotificationWindow : AcrylicBlurWindow
 	{
+		static NotificationWindow()
+		{
+			ThemeModeProperty.OverrideMetadata(typeof(NotificationWindow), new FrameworkPropertyMetadata(BlurWindowThemeMode.System));
+		}
+
 		#region NativeOpacity dependency property
 
 		public static readonly DependencyProperty NativeOpacityProperty = DependencyProperty.Register(

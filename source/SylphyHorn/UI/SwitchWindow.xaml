@@ -10,8 +10,10 @@
 					   xmlns:ui="clr-namespace:SylphyHorn.UI"
 					   xmlns:bindings="clr-namespace:SylphyHorn.UI.Bindings"
 					   xmlns:controls="clr-namespace:SylphyHorn.UI.Controls"
+					   xmlns:services="clr-namespace:SylphyHorn.Services"
 					   mc:Ignorable="d"
 					   d:DataContext="{d:DesignInstance bindings:NotificationWindowViewModel}"
+					   FontFamily="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Notifications_FontFamily}"
 					   Title="{Binding Title}"
 					   Width="500"
 					   Height="100"
@@ -68,12 +70,10 @@
 			   Margin="16,12">
 		<TextBlock DockPanel.Dock="Top"
 				   Text="{Binding Header}"
-				   FontFamily="Segoe UI Light, Meiryo UI"
 				   FontSize="18"
 				   Margin="2,0,0,-4" />
 		<TextBlock DockPanel.Dock="Top"
 				   Text="{Binding Body}"
-				   FontFamily="Segoe UI Light, Meiryo UI"
 				   FontSize="32" />
 	</DockPanel>
 </ui:NotificationWindow>

@@ -123,6 +123,9 @@
   <data name="Common_Reference" xml:space="preserve">
     <value>Reference</value>
   </data>
+  <data name="Notifications_FontFamily" xml:space="preserve">
+    <value>Segoe UI Light, Segoe UI Emoji</value>
+  </data>
   <data name="Settings_Background" xml:space="preserve">
     <value>Background</value>
   </data>
