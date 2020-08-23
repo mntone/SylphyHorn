@@ -11,6 +11,7 @@ using MetroRadiance.UI.Controls;
 using SylphyHorn.Interop;
 using SylphyHorn.Services;
 using SylphyHorn.UI.Bindings;
+using WindowsDesktop;
 
 namespace SylphyHorn.UI
 {
@@ -23,7 +24,15 @@ namespace SylphyHorn.UI
 			TopmostProperty.OverrideMetadata(typeof(NotificationWindow), new FrameworkPropertyMetadata(true));
 		}
 
-		protected WindowPlacement Placement { get; }
+		protected virtual bool ShowInAllVirtualDesktops => true;
+
+		public WindowPlacement Placement { get; set; }
+
+		public new NotificationWindowViewModel DataContext
+		{
+			get => (NotificationWindowViewModel)base.DataContext;
+			set => base.DataContext = value;
+		}
 
 		private IntPtr _hWnd = IntPtr.Zero;
 
@@ -48,11 +57,13 @@ namespace SylphyHorn.UI
 		public NotificationWindow()
 		{
 			this.Placement = WindowPlacement.Center;
+			this.IsVisibleChanged += this.OnIsVisibleChanged;
 		}
 
 		public NotificationWindow(WindowPlacement placement)
 		{
 			this.Placement = placement;
+			this.IsVisibleChanged += this.OnIsVisibleChanged;
 		}
 
 		protected override void OnSourceInitialized(EventArgs e)
@@ -67,7 +78,16 @@ namespace SylphyHorn.UI
 			style |= WindowExStyles.WS_EX_TOOLWINDOW | WindowExStyles.WS_EX_NOACTIVATE | WindowExStyles.WS_EX_TRANSPARENT;
 			User32.SetWindowLongEx(this._hWnd, style);
 
+			//this.ChangeOpacity(this.NativeOpacity);
 			this.UpdateWindowPosition();
+		}
+
+		private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			if ((bool)e.NewValue)
+			{
+				this.UpdateWindowPosition();
+			}
 		}
 
 		protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
@@ -206,7 +226,7 @@ namespace SylphyHorn.UI
 			if (this._hWnd == IntPtr.Zero) return;
 
 			var bAlpha = (byte)(opacity * 255.0);
-			NativeMethods.SetLayeredWindowAttributes(this._hWnd, 0, bAlpha, LayeredWindowAttributes.Alpha);
+			//NativeMethods.SetLayeredWindowAttributes(this._hWnd, 0, bAlpha, LayeredWindowAttributes.Alpha);
 		}
 	}
 }

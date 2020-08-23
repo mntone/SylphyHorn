@@ -17,35 +17,51 @@
 					   Height="100"
 					   SnapsToDevicePixels="True">
 	<Window.Resources>
-		<Storyboard x:Key="FadeIn">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="NativeOpacity"
-										   Storyboard.TargetName="Window">
-				<!--<EasingDoubleKeyFrame KeyTime="0"
-									  Value=".0" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5"
-									  Value=".0" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.8"
-									  Value="1" />-->
+		<Storyboard x:Key="FadeIn" Duration="0:0:0.3">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+				<EasingDoubleKeyFrame KeyTime="0"
+									  Value=".004" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1"
+									  Value=".004" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3"
+									  Value="1" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 
-		<Storyboard x:Key="FadeOut">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="NativeOpacity"
-										   Storyboard.TargetName="Window">
+		<Storyboard x:Key="FadeOut" Duration="0:0:0.2">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
 				<EasingDoubleKeyFrame KeyTime="0"
 									  Value="1" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.2"
-									  Value=".0" />
+									  Value=".004" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Window.Resources>
+	<Window.Style>
+		<Style TargetType="{x:Type ui:NotificationWindow}">
+			<Style.Triggers>
+				<Trigger Property="IsVisible"
+						 Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource FadeIn}" />
+					</Trigger.EnterActions>
+				</Trigger>
+				<Trigger Property="IsVisible"
+						 Value="False">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource FadeOut}" />
+					</Trigger.EnterActions>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</Window.Style>
 	<Window.Triggers>
-		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+		<!--<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard Storyboard="{StaticResource FadeIn}" />
-		</EventTrigger>
+		</EventTrigger>-->
 	</Window.Triggers>
 
-	<i:Interaction.Behaviors>
+	<!--<i:Interaction.Behaviors>
 		<livet:WindowCloseCancelBehavior CloseCanceledCallbackMethodTarget="{Binding}"
 										 CloseCanceledCallbackMethodName="CloseCanceledCallback"
 										 CanClose="{Binding CanClose}" />
@@ -55,11 +71,11 @@
 		<i:EventTrigger EventName="ContentRendered">
 			<livet:LivetCallMethodAction MethodTarget="{Binding}"
 										 MethodName="Initialize" />
-		</i:EventTrigger>
-		<i:EventTrigger EventName="Closed">
+		</i:EventTrigger
+		<i:EventTrigger EventName="DataContextChanged">
 			<livet:DataContextDisposeAction />
 		</i:EventTrigger>
-	</i:Interaction.Triggers>
+	</i:Interaction.Triggers>>-->
 
 	<DockPanel VerticalAlignment="Center"
 			   Margin="16,12">

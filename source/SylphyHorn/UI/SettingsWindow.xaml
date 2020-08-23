@@ -198,7 +198,7 @@
 						<TextBlock Text="{Binding Source={x:Static services:ResourceService.Current}, Path=Resources.Settings_Language}"
 								   Style="{DynamicResource HeaderStyleKey}" />
 						<StackPanel Margin="8,0,0,0">
-							<metro:PromptComboBox ItemsSource="{Binding Cultures}"
+							<metro:PromptComboBox ItemsSource="{Binding Cultures, Mode=OneTime}"
 												  DisplayMemberPath="Display"
 												  SelectedValuePath="Value"
 												  SelectedValue="{Binding Culture, Mode=TwoWay}"
@@ -829,7 +829,7 @@
 								   FontSize="16"
 								   Margin="2,6" />
 
-						<ItemsControl ItemsSource="{Binding Licenses}">
+						<ItemsControl ItemsSource="{Binding Licenses, Mode=OneTime}">
 							<ItemsControl.Template>
 								<ControlTemplate TargetType="{x:Type ItemsControl}">
 									<StackPanel IsItemsHost="True"

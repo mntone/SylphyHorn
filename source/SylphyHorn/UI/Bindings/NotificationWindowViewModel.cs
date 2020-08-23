@@ -1,9 +1,28 @@
-﻿using MetroTrilithon.Mvvm;
+﻿using Livet;
 
 namespace SylphyHorn.UI.Bindings
 {
-	public class NotificationWindowViewModel : WindowViewModel
+	public class NotificationWindowViewModel : NotificationObject
 	{
+		#region Title 変更通知プロパティ
+
+		private string _Title;
+
+		public string Title
+		{
+			get { return this._Title; }
+			set
+			{
+				if (this._Title != value)
+				{
+					this._Title = value;
+					this.RaisePropertyChanged();
+				}
+			}
+		}
+
+		#endregion
+
 		#region Header 変更通知プロパティ
 
 		private string _Header;
@@ -41,7 +60,5 @@ namespace SylphyHorn.UI.Bindings
 		}
 
 		#endregion
-
-
 	}
 }
