@@ -24,6 +24,8 @@
 			<converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
 			<converters2:ArrayToStringConverter x:Key="ArrayToStringConverter" />
 			<controls:UnlockImageConverter x:Key="UnlockImageConverter" />
+			<controls:MultiBooleanAndConverter x:Key="MultiBooleanAndConverter" />
+			<controls:WallpaperPositionConverter x:Key="WallpaperPositionConverter" />
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>
